@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom2json</title>
+</head>
+<body>
+  <div class="box">
+    <p class="p">hello world</p>
+    <div class="person">
+      <span class="name">前端胖头鱼</span>
+      <span class="age">100</span>
+    </div>
+  </div>
+  <script>
+    const dom2json = (domNode) => {
+      if (!domNode) {
+        return
+      }
+      const target = {
+        name: domNode.tagName,
+        children: []
+      }
+
+      const children = domNode.children;
+      if (children?.length) {
+        Array.from(children).forEach((child, i) => {
+          target.children[i] = dom2json(child)
+        })
+      }
+      return target;
+    }
+    const dd = dom2json(document.querySelector('.box'))
+
+    const data = [
+      // 注意这里，专门把pid为1的元素放一个在前面
+      { id: 1, name: '部门1', pid: 0 },
+      { id: 2, name: '部门2', pid: 1 },
+      { id: 3, name: '部门3', pid: 1 },
+      { id: 4, name: '部门4', pid: 3 },
+      { id: 5, name: '部门5', pid: 4 },
+      { id: 6, name: '部门5', pid: 4 },
+      { id: 7, name: '部门7', pid: 6 },
+    ]
+    const result = [];
+    const hashMap = {};
+    const convertTree = (array) => {
+      array.forEach((item) => {
+        const {id, pid} = item;
+        hashMap[id] = item;
+        if (id !== 1) {
+          if (hashMap[pid]?.children) {
+            hashMap[pid].children.push(item)
+          } else {
+            hashMap[pid].children = [item]
+          }
+        } else {
+          result.push(hashMap[id])
+        }
+      })
+      return result;
+    }
+
+
+    console.log(JSON.parse(JSON.stringify(convertTree(data))))
+
+
+
+  </script>
+</body>
+</html>
+
