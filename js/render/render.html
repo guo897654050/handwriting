@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Loop</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+        }
+
+        #demo {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- <script src="./render1.js"></script> -->
+    <!-- <script src="./render2.js"></script> -->
+    <!-- <div id="demo"></div>
+    <script>
+        setTimeout(() => {
+            document.getElementById('demo').style.background = 'red';
+            setTimeout(() => {
+                document.getElementById('demo').style.background = 'pink';
+            })
+        })
+    </script> -->
+    <div id='con'>this is con</div>
+    <script>
+        var t = 0;
+        var con = document.getElementById('con');
+        con.onclick = function () {
+            setTimeout(function setTimeout1() {
+                con.textContent = t;
+            }, 0)
+        };
+    </script>
+</body>
+</html>

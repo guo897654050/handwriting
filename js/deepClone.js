@@ -15,3 +15,4 @@ function deepClone(source) {
 
 const a = { a: { c: 12, d: [1, 2, { c: 123 }] }, b: 2 }
 console.log(deepClone(a))
+

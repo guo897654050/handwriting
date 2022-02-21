@@ -36,6 +36,23 @@ const data = [
 ]
 
 const res = [];
+function covertTree2(data) {
+  for (let i = 0; i < data.length; i++) {
+    const tmpData = data[i];
+    const keys = Object.keys(tmpData)
+    let tmp = {}
+    for (let key of keys) {
+      if (key === 'children') {
+        covertTree(tmpData.children)
+      } else {
+        tmp[key] = tmpData[key]
+      }
+    }
+    res.push(tmp)
+  }
+  return res;
+}
+
 const covertTree = (tree) => {
   tree.forEach((item) => {
     const children = item.children;

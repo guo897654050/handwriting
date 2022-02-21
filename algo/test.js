@@ -1,21 +1,15 @@
-var addTwoNumbers = function (l1, l2) {
-  function nodeSum(l1, l2, carry) {
-    console.log(l1, l2, carry)
-    // if (l1 || l2 || carry) {
-    //   console.log(11, carry)
-    //   let val1 = l1 ? l1 : 0;
-    //   let val2 = l2 ? l2 : 0;
-    //   let sum = val1 + val2 + carry;
-    //   let carry = Math.floor(sum / 10);
-    //   let val = sum % 10;
-    //   let node = new ListNode(val);
-    //   node.next = nodeSum(l1.next, l2.next, carry)
-    //   return node;
-    // }
+function subarraysWithKDistinct(nums, k) {
+  let len = nums.length;
+  let l = r = 0;
+  let freq = new Array(len + 1).fill(0);
+  let count = 0;
+  while (r < len) {
+    if (freq[nums[r]] === 0) {
+      count++;
+    }
+    freq[nums[r]]++;
+    r++;
   }
-  let carry = 0;
-
-  return nodeSum(l1, l2, carry);
 };
 
-console.log(addTwoNumbers(6, 5))
+console.log(subarraysWithKDistinct([1, 2, 1, 2, 3], 2))

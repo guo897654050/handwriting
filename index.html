@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    async function func1() {
+      console.log(111)
+    }
+
+    async function func2() {
+      await sleep()
+      console.log(222)
+    }
+
+    async function func3() {
+      console.log(333)
+    }
+
+    async function sleep() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve()
+        }, 3000)
+      })
+    }
+
+    Array.prototype.myForEach = async function (callback, thisArg) {
+      console.log(121312, this)
+      const _arr = this;
+      const _isArray = Array.isArray(_arr);
+      const _thisArg = thisArg ? Object(thisArg) : null;
+      if (!_isArray) {
+        return new TypeError('the caller must be array!')
+      }
+      console.log(9999, _arr)
+
+      for (let i = 0; i < this.length; i++) {
+        await callback.call(_thisArg, _arr[i], i, _arr)
+      }
+    }
+
+    let funcArr = [func1, func2, func3];
+
+    async function all(funcArr) {
+      funcArr.myForEach(async (fn) => await fn())
+    }
+
+    all(funcArr)
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .toggle {
+      position: absolute;
+      margin-left: -9999px;
+      visibility: hidden;
+    }
+
+    .label {
+      position: relative;
+      display: block;
+      width: 120px;
+      height: 60px;
+      border-radius: 60px;
+      background-color: azure;
+    }
+
+    .label:before,
+    .label:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      content: '';
+    }
+
+    .label:before {
+      background-color: darkgray;
+      right: 0;
+      border-radius: 60px;
+      transition: background 0.4s;
+    }
+
+    .label:after {
+      width: 58px;
+      border-radius: 100%;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      transition: margin 0.4s;
+
+    }
+
+    .toggle:checked+.label:before {
+      background-color: aqua;
+    }
+
+    .toggle:checked+.label:after {
+      margin-left: 58px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input id="cnm" class="toggle" type="checkbox">
+    <label for="cnm" class="label" />
+  </div>
+
+  <button>click</button>
+
+  <script>
+    // while (true) {
+    //   setTimeout(() => {
+    //     // console.log(123)
+    //   })
+    // }
+  </script>
+</body>
+</html>

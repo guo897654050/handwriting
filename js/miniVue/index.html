@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom2json</title>
+</head>
+<body>
+  <div id="app">
+    <input v-model="qq" v-on:click="handleClick">
+    <h2>{{title}}</h2>
+    <h1>{{name}}</h1>
+  </div>
+
+</body>
+<script src="./index.js"></script>
+<script type="text/javascript">
+  const VueDemo = new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        name: 'name',
+        title: 'title',
+        qq: 'input-origin'
+      }
+    },
+    methods: {
+      handleClick(e) {
+        console.log('you have click this!')
+      }
+    }
+  });
+
+  window.setTimeout(function () {
+    console.log('name值改变了');
+    VueDemo.data.name = 'namechange';
+    VueDemo.data.title = 'titlechange'
+    VueDemo.data.qq = 'qq.change'
+
+  }, 2000);
+
+</script>
+
+</html>

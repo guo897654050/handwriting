@@ -1,0 +1,19 @@
+{
+  "name": "handwriting",
+  "version": "1.0.0",
+  "description": "一些手写题目的练习",
+  "main": "next.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guo897654050/handwriting.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guo897654050/handwriting/issues"
+  },
+  "homepage": "https://github.com/guo897654050/handwriting#readme"
+}
