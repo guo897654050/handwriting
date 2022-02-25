@@ -43,3 +43,15 @@ async function all(funcArr) {
 all(funcArr)
 
 
+
+// promise
+let promise = Promise.resolve();
+function test(i = 0) {
+  if (i === funcArr.length) return;
+  promise = promise.then(() => funcArr[i])
+  test(i + 1)
+}
+
+test()
+
+

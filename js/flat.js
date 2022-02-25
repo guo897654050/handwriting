@@ -22,14 +22,17 @@
 // };
 
 function flat(arr, deep) {
-  deep > 0 ?
+  return deep > 0 ?
     arr.reduce((prev, curr) => {
-      return prev.concat(Array.isArray(curr) ? flat(arr, deep - 1) : curr)
+      return prev.concat(Array.isArray(curr) ? flat(curr, deep - 1) : curr)
     }, [])
     : arr.slice()
 }
 
 
+
 let a = [1, 2, 3, [4, 5, 6], [7, 8, [9, 10, [0, 12]]]]
-console.log(flat(a, 1))
+console.log(flat(a, Infinity))
+
+
 

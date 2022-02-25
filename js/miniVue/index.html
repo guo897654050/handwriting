@@ -5,12 +5,35 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>dom2json</title>
+  <style>
+    .test {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background-color: black;
+      /* border: 1px solid red; */
+    }
+
+    .test:after {
+      position: absolute;
+      content: '';
+      display: block;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      border: 1px solid red;
+      transform: scale(0.5);
+      transform-origin: left top;
+    }
+  </style>
 </head>
 <body>
   <div id="app">
     <input v-model="qq" v-on:click="handleClick">
     <h2>{{title}}</h2>
     <h1>{{name}}</h1>
+    <div class="test"></div>
   </div>
 
 </body>

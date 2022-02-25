@@ -2,14 +2,22 @@ function interval(fn, delay) {
   function inner() {
     let timer = setTimeout(() => {
       fn();
-      clearTimeout(timer);
+      // clearTimeout(timer);
       inner();
     }, delay)
   }
   inner();
 }
 
-const func = () => {
+function sleep() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, 2000)
+  })
+}
+const func = async () => {
+  await sleep();
   console.log(123)
 }
 

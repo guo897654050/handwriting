@@ -1,15 +1,22 @@
-function test() {
-  console.log('start')
-  setTimeout(() => {
-    console.log('children2')
-    Promise.resolve().then(() => { console.log('children2-1') })
-  }, 0)
-  setTimeout(() => {
-    console.log('children3')
-    Promise.resolve().then(() => { console.log('children3-1') })
-  }, 0)
-  Promise.resolve().then(() => { console.log('children1') })
-  console.log('end')
+let timer = null;
+function interval(func, delay) {
+  let interFunc = function () {
+    func.call(null);
+    timer = setTimeout(interFunc, delay) // 递归调用
+  }
+  timer = setTimeout(interFunc, delay) // 触发递归
 }
 
-test()
+function sleep() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, 2000)
+  })
+}
+const func = async () => {
+  await sleep();
+  console.log(123)
+}
+// 调用
+interval(() => func(), 1000)

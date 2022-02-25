@@ -164,6 +164,7 @@ class Compiler {
 
   compilerText(node, exp) {
     const initText = this.vm[exp];
+    // 赋上初始值
     this.updateText(node, initText);
     new Watcher(this.vm, exp, (val) => {
       this.updateText(node, val)
