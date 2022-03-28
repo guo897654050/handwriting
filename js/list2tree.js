@@ -5,26 +5,22 @@ const data = [
   { id: 3, name: '部门3', pid: 1 },
   { id: 4, name: '部门4', pid: 3 },
   { id: 5, name: '部门5', pid: 4 },
+  { id: 6, name: '部门6', pid: 5 },
   { id: 7, name: '部门7', pid: 6 },
 ]
 
-function convertList(data) {
-
-}
 
 function list2tree(array) {
   const hashMap = {};
   const result = [];
   array.forEach((item) => {
     const { id, pid } = item;
-    if (!hashMap[id]) {
-      hashMap[id] = [];
-    }
-
-    if (pid === 0) {
-      result.push(item)
+    hashMap[id] = item;
+    hashMap[id].children = [];
+    if (pid !== 0) {
+      hashMap[pid].children.push(item)
     } else {
-      hashMap[id].children = item
+      result.push(item)
     }
   })
   return result

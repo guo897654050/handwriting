@@ -1,21 +1,18 @@
-function curry(fn, len = fn.length) {
-  return _curry.call(this, fn, len)
-};
+function sumFn(...args) {
+  return args.reduce((prev, curr) => prev + curr, 0)
+}
 
-function _curry(fn, len, ...args) {
-  return function (...params) {
-    const _args = [...args, ...params];
-    console.log(123213, _args)
-    if (_args.length >= len) {
-      return fn.apply(this, _args);
+
+function curry(fn) {
+  const args = [];
+  return function result(...rest) {
+    if (rest.length === 0) {
+      return fn.apply(null, args)
     } else {
-      return _curry.call(this, fn, len, ..._args)
+      args.push(...rest);
+      return result
     }
   }
 }
 
-let fn = curry(function (a, b, c, d, e) {
-  console.log(a, b, c, d, e)
-})
-
-fn(1, 2)(123)(3, 4, 5);
+console.log(curry(sumFn)(1)(2)(2, 3, 33)())

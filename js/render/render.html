@@ -14,6 +14,23 @@
         #demo {
             height: 100%;
         }
+
+        #tt {
+            position: relative;
+        }
+
+        #tt:after {
+            position: absolute;
+            width: 0;
+            height: 0;
+            content: '';
+            border-right: 100px solid transparent;
+            border-top: 100px solid #ff0;
+            border-left: 100px solid transparent;
+            border-bottom: 100px solid transparent;
+
+
+        }
     </style>
 </head>
 <body>
@@ -31,6 +48,7 @@
         })
     </script> -->
     <div id='con'>this is con</div>
+    <div id="tt"></div>
     <script>
         var t = 0;
         var con = document.getElementById('con');
