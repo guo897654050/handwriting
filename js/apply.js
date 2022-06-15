@@ -14,6 +14,7 @@
 // }
 
 Function.prototype.myApply = function (context, args) {
+  console.log('apply para', args)
   context = context || window;
   args = args ? args : [];
   const key = Symbol();
@@ -24,7 +25,7 @@ Function.prototype.myApply = function (context, args) {
 }
 
 Function.prototype.myCall = function (context, ...args) {
-  console.log(111232, args)
+  console.log('call para', args)
   context = context ? context : window;
   args = args ? args : [];
   const key = Symbol();

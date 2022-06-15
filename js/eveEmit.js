@@ -1,35 +1,53 @@
-class eventEmitter {
+class EventEmitter {
   constructor() {
-    this.event = {};
+    this.events = {};
   }
-
-  on(fn, type) {
-    if (!this.event[type]) {
-      this.event[type] = [];
-    }
-    this.event[type].push(fn)
-  }
-
-
-  emit(type) {
-    if (this.event[type]) {
-      this.event[type].forEach((cb) => cb())
+  // 实现订阅
+  on(type, callBack) {
+    if (!this.events[type]) {
+      this.events[type] = [callBack];
+    } else {
+      this.events[type].push(callBack);
     }
   }
-
-  off(fn, type) {
-    if (!this.event[type]) return;
-    this.event[type] = this.event[type].filter((item) => item !== fn)
+  // 删除订阅
+  off(type, callBack) {
+    if (!this.events[type]) return;
+    this.events[type] = this.events[type].filter((item) => {
+      return item !== callBack;
+    });
   }
-
-
-  once(fn, type) {
-    function tt() {
-      fn();
-      this.off(tt, type)
+  // 只执行一次订阅事件
+  once(type, callBack) {
+    function fn() {
+      callBack();
+      this.off(type, fn);
     }
-
-    this.on(tt, type)
+    this.on(type, fn);
   }
-
+  // 触发事件
+  emit(type, ...rest) {
+    this.events[type] &&
+      this.events[type].forEach((fn) => fn.apply(this, rest));
+  }
 }
+// 使用如下
+// const event = new EventEmitter();
+
+// const handle = (...rest) => {
+//   console.log(rest);
+// };
+
+// event.on("click", handle);
+
+// event.emit("click", 1, 2, 3, 4);
+
+// event.off("click", handle);
+
+// event.emit("click", 1, 2);
+
+// event.once("dbClick", () => {
+//   console.log(123456);
+// });
+// event.emit("dbClick");
+// event.emit("dbClick");

@@ -8,14 +8,13 @@ const A = {
   }
 }
 
-
-let map = new Map();
+const map = new Map();
 function deepClone(source) {
   if (map.has(source)) return map.get(source)
   if (typeof source === 'object' && source !== null) {
     let target = Array.isArray(source) ? [] : {};
     map.set(source, target)
-    for (let key in source) {
+    for (let key of Object.keys(source)) {
       if (typeof source[key] === 'object') {
         target[key] = deepClone(source[key])
       } else {
@@ -27,5 +26,34 @@ function deepClone(source) {
     return source
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+// let map = new Map();
+// function deepClone(source) {
+//   if (map.has(source)) return map.get(source)
+//   if (typeof source === 'object' && source !== null) {
+//     let target = Array.isArray(source) ? [] : {};
+//     map.set(source, target)
+//     for (let key in source) {
+//       if (typeof source[key] === 'object') {
+//         target[key] = deepClone(source[key])
+//       } else {
+//         target[key] = source[key]
+//       }
+//     }
+//     return target
+//   } else {
+//     return source
+//   }
+// }
 console.log(deepClone(A))
-console.log(222, map)
+// console.log(222, map)

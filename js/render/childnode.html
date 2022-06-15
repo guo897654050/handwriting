@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>child</title>
+  <style>
+    .tangle {
+      width: 0;
+      height: 0;
+      border: 50px solid transparent;
+      border-bottom: 20px solid red;
+    }
+
+    .trapezoid {
+      width: 50px;
+      height: 50px;
+      border: 50px solid red;
+      border-bottom: 50px solid sandybrown;
+    }
+
+    .scetor {
+      width: 50px;
+      height: 50px;
+      border-radius: 50px 0 0 0;
+      background-color: aqua;
+      transform: rotate(45deg);
+    }
+
+    .arrow {
+      width: 0;
+      height: 0;
+      border: 50px solid transparent;
+      border-right: 50px solid #0f0;
+      position: relative;
+    }
+
+    .arrow::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: -45px;
+      top: -50px;
+      border: 50px solid transparent;
+      border-right: 50px solid #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <p id="p1" style="color: red;" v-model="123">1111</p>
+    <p>2222</p>
+    <p>3333</p>
+    <div>
+      <div>
+        <p>4444</p>
+        <p>5555</p>
+      </div>
+    </div>
+    <div>
+      <p>三角形准备</p>
+      <div class="tangle"></div>
+      <p>梯形绘制</p>
+      <div class="trapezoid"></div>
+      <p>扇形准备</p>
+      <div class="scetor"></div>
+      <p>箭头准备</p>
+      <div class="arrow"></div>
+    </div>
+  </div>
+
+
+  <script>
+    const el = document.querySelector('#app');
+    window.el = el
+    const p = document.querySelector('p1')
+    window.p1 = p1;
+    const pq = [];
+    // new Promise((rs, re) => {
+    //   re(123)
+    // })
+    console.log(222)
+    window.onerror = function (message, url, line, column, error) {
+      console.log('log---onerror::::', message, url, line, column, error);
+    }
+    // window.addEventListener('unhandledrejection', function (e) {
+    //   console.log(e)
+    // });
+
+
+
+  </script>
+</body>
+</html>

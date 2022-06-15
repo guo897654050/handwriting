@@ -20,7 +20,7 @@ function throttle2(fn, delay) {
   return function (...args) {
     if (!timer) {
       timer = setTimeout(() => {
-        fn.call(this, ...args);
+        fn.apply(this, args);
         timer = null;
       }, delay)
     }

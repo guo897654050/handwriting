@@ -36,6 +36,10 @@
     <div class="test"></div>
   </div>
 
+  <div id="parentElement">
+    <span id="childElement">foo bar</span>
+  </div>
+
 </body>
 <script src="./index.js"></script>
 <script type="text/javascript">
@@ -63,6 +67,17 @@
 
   }, 2000);
 
+  // 创建要插入的节点
+  var newNode = document.createElement("span");
+
+  // 获得父节点的引用
+  var parentDiv = document.getElementById("childElement").parentNode;
+
+  //实验一：referenceNode 存在 --> 正确返回
+  var sp2 = document.getElementById("childElement");
+  parentDiv.insertBefore(newNode, sp2);
+
 </script>
+
 
 </html>

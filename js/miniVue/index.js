@@ -39,7 +39,7 @@ class Dep {
   }
 
   addDep(sub) {
-    this.subs.push(sub)
+    this.subs.push(sub);
   }
 
   notify() {
@@ -63,7 +63,6 @@ class Watcher {
     this.exp = exp;
     this.cb = cb;
     this.value = this.get();
-
   }
 
   update() {
@@ -99,7 +98,7 @@ class Compiler {
     if (this.el) {
       this.fragment = this.node2Fragment(this.el);
       this.compilerElement(this.fragment);
-      this.el.appendChild(this.fragment)
+      this.el.appendChild(this.fragment);
     } else {
       console.log('Dom 元素不存在！')
     }
@@ -109,7 +108,7 @@ class Compiler {
     const fragment = document.createDocumentFragment();
     let child = el.firstChild;
     while (child) {
-      // 这里是move dom
+      // 这里是move dom 会把这个dom移动走，可理解从原来的dom抽出去了
       fragment.appendChild(child);
       child = el.firstChild
     }

@@ -15,6 +15,7 @@ Promise.retry = function (fn, times = 3) {
   })
 }
 
+
 function test() {
   const n = Math.random();
   return new Promise((resolve, reject) => {

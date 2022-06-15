@@ -28,8 +28,13 @@
             border-top: 100px solid #ff0;
             border-left: 100px solid transparent;
             border-bottom: 100px solid transparent;
+        }
 
-
+        #test {
+            margin-top: 100px;
+            width: 200px;
+            height: 200px;
+            background-color: red;
         }
     </style>
 </head>
@@ -49,6 +54,7 @@
     </script> -->
     <div id='con'>this is con</div>
     <div id="tt"></div>
+    <div id="test"></div>
     <script>
         var t = 0;
         var con = document.getElementById('con');
@@ -57,6 +63,32 @@
                 con.textContent = t;
             }, 0)
         };
+
+
+        // 改变背景
+        const domTest = document.querySelector('#test');
+        const color = ['black', 'pink', 'blue', 'skyblue',]
+        let count = 0;
+        async function sleep() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve()
+                }, 1000)
+            })
+        }
+        async function animateCallback() {
+            domTest.style.background = color[count++]
+            console.log(count)
+            await sleep();
+            if (count === 5) {
+                cancelAnimationFrame(raf_id);
+            } else {
+                raf_id = requestAnimationFrame(animateCallback);
+            }
+        }
+        raf_id = window.requestAnimationFrame(animateCallback)
+
+
     </script>
 </body>
 </html>

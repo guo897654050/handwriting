@@ -6,7 +6,7 @@ const options = {
         c: [1, 23]
       }
     },
-    'htmlWebpackPlugin.options.cdn.js': [888],
+    // 'htmlWebpackPlugin.options.cdn.js': [888],
     'a.v.css': [4455],
     m: {
       n: {
@@ -14,11 +14,13 @@ const options = {
           b: 5555
         }
       }
-    }
+    },
+    // a: [333]
   }
 }
 
 function dfs(keys, value, res) {
+  console.log(88, value)
   if (keys.length) {
     const strItem = keys.shift();
     if (!keys.length) {
@@ -33,7 +35,7 @@ function dfs(keys, value, res) {
 
 function dfs2(rebuildData, key, value) {
   const tmp = rebuildData[key] ? rebuildData[key] : rebuildData[key] = {};
-  if (typeof value === 'object') {
+  if (Object.prototype.toString.call(value).slice(8, -1) === 'Object') {
     const nextKey = Object.keys(value)[0]
     dfs2(tmp, nextKey, value[nextKey])
   } else {
